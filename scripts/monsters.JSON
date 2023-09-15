@@ -1,0 +1,10 @@
+[
+    {
+        "name": "demon",
+        "minHealth": "5",
+        "maxHealth": "50",
+        "minAttack": "20",
+        "maxAttack": "50"
+    }
+
+]
