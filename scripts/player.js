@@ -6,6 +6,10 @@ class Creature{
         this.alive = true
     }
 
+    get name(){
+        return this.username;
+    }
+
     get attack(){
         return this.attackPoints;
     }
@@ -14,7 +18,7 @@ class Creature{
         return this.hitPoints;
     }
 
-    get alive(){
+    get isAlive(){
         return this.alive;
     }
 
@@ -24,8 +28,18 @@ class Creature{
             this.alive = false;
         }
     }
-    
-
 
 }
 
+
+const player = new Creature('player', 10, 20);
+const opponent = new Creature('enemy', 5, 10);
+
+
+
+while (player.isAlive()){
+    player.updateHealth(opponent.attack())
+    opponent.updateHealth(player.damage())
+}
+
+console.log(`${player.}`)
