@@ -15,7 +15,8 @@
 
 .main{
     background-color: rgb(63, 126, 126);
-    height: 90vh;
+    height: 90%;
+    max-height: 90%;
     
 }
 
@@ -25,9 +26,9 @@ body{
 
 .main-screen {
    
-    background-color: white;
-    max-height: 75vh;
-    max-width: 80vw;
+    background-color: yellowgreen;
+    max-height: 700px;
+    max-width: 800px;
    
     margin: auto;
 }
@@ -45,11 +46,50 @@ body{
     height: 500px;
     width: 100%;
 }
+
 .start{
     border: 4px black solid;
     border-radius: 10px;
     margin: auto;
-    width: 10vw;
+    width: 20%;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 2px;    
+    font-size: 20px;
+}
+
+.bottom{
+    height: 80px;
+}
+
+
+
+.in-game {
+    height: 500px;
+    width: 100%;
+    background-color: black;
+    transition: ease;
+    z-index: -1;
+    color: red;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+    
+    
+
+}
+p {
+    margin: 0;
+}
+
+.stat{
+    width: 150px;
+    height: 50px;
+    margin: 0;
+    background-color: white;
+    flex-direction: column;
 }

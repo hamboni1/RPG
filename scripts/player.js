@@ -6,19 +6,19 @@ class Creature{
         this.alive = true
     }
 
-    get name(){
+    name(){
         return this.username;
     }
 
-    get attack(){
+    attack(){
         return this.attackPoints;
     }
 
-    get health(){
+    health(){
         return this.hitPoints;
     }
 
-    get isAlive(){
+    isAlive(){
         return this.alive;
     }
 
@@ -31,15 +31,4 @@ class Creature{
 
 }
 
-
-const player = new Creature('player', 10, 20);
-const opponent = new Creature('enemy', 5, 10);
-
-
-
-while (player.isAlive()){
-    player.updateHealth(opponent.attack())
-    opponent.updateHealth(player.damage())
-}
-
-console.log(`${player.}`)
+const player = new Creature('player', 10, 25);

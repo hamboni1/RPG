@@ -1,10 +1,25 @@
 [
     {
-        "name": "demon",
+        "class": "Demon",
         "minHealth": "5",
         "maxHealth": "50",
         "minAttack": "20",
         "maxAttack": "50"
+    },
+    {
+        "class": "Goblin",
+        "minHealth": "5",
+        "maxHealth": "50",
+        "minAttack": "20",
+        "maxAttack": "50"
+    },
+    {
+        "class": "Dragon",
+        "minHealth": "5",
+        "maxHealth": "50",
+        "minAttack": "20",
+        "maxAttack": "50"
+
     }
 
 ]
