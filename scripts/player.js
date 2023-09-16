@@ -23,12 +23,12 @@ class Creature{
     }
 
     updateHealth(damage) {
-        this.health -= damage
-        if (this.health < 0){
+        this.hitPoints -= damage;
+        if (this.hitPoints < 0){
             this.alive = false;
         }
     }
 
 }
 
-const player = new Creature('player', 10, 25);
+const player = new Creature('player', 50, 500);

@@ -9,7 +9,6 @@ xhr.onreadystatechange = function() {
         console.log(monsters)
     }
 }
-
 xhr.open('GET', './scripts/monsters.JSON')
 xhr.send()
 
@@ -17,8 +16,9 @@ const start = document.getElementById("start")
 start.addEventListener("click", ()=> {
     let img = document.querySelector('.arena')
     let button = document.querySelector('#start')
-    let message = document.querySelector('.message')
+    
     let top = document.querySelector('.top')
+    button.disabled = true;
 
     start.textContent = "LET'S BEGIN";
     console.log(monsters)
@@ -26,9 +26,9 @@ start.addEventListener("click", ()=> {
         start.remove()
         img.remove()
         button.remove()
-        message.textContent = `Can you survive the ${opponent.name()}`;
+        
         top.classList.add('in-game');
-        setUpGame();
+        setUpGame(player, opponent);
     }, 2000)
     opponent = createOpponent();
 
@@ -63,7 +63,9 @@ function statGenerator(low, high){
 
 
 
-function setUpGame(){
+function setUpGame(player, opponent){
+    let message = document.querySelector('.message')
+    message.textContent = `Can you survive the ${opponent.name()}`;
     let stat = document.createElement('p')
     let top = document.querySelector('.top')
     stat.classList.add('stat')
@@ -80,4 +82,50 @@ function setUpGame(){
 
     top.append(stat);
     top.append(stat1);
+    
+    let btn = document.createElement('button');
+    let bottom = document.querySelector('.bottom');
+    btn.textContent = "Attack";
+
+    btn.addEventListener('click',()=>{
+        battle(player, opponent);
+        
+
+    })
+
+    bottom.append(btn);
+
+}
+
+
+function battle(player, opponent){
+    player.updateHealth(opponent.attack());
+    opponent.updateHealth(player.attack());
+    updateStatUI(player, opponent);
+
+}
+
+function updateStatUI(player, opponent){
+    let stats = document.querySelectorAll('.stat');
+    console.log(stats)
+    stats[0].textContent = `${player.name()}
+    ${player.attack()}
+    ${player.health()}`;
+    stats[1].textContent = `${opponent.name()}
+    ${opponent.attack()}
+    ${opponent.health()}`;
+
+    if (!player.isAlive()){
+        alert("You are dead")
+        location.reload();
+    }
+    else if(!opponent.isAlive()){
+        alert("You have won!");
+        opponent = createOpponent();
+        let top = document.querySelector('.top')
+        let bot = document.querySelector('.bottom')
+        top.innerHTML = "";
+        bot.innerHTML = "";
+        setUpGame(player, opponent);
+    }
 }

@@ -10,14 +10,13 @@
     font-size: 19px;
     padding: 0;
     padding-top: 9px;
-    
 }
 
 .main{
-    background-color: rgb(63, 126, 126);
+    display: flex;
+    background-color: grey;
     height: 90%;
     max-height: 90%;
-    
 }
 
 body{
@@ -48,16 +47,17 @@ body{
 }
 
 .start{
-    border: 4px black solid;
-    border-radius: 10px;
-    margin: auto;
-    width: 20%;
-    text-align: center;
-    margin-top: 2px;    
-    font-size: 20px;
+    border: 2px solid black;
+    font-weight: bold;
+    background-color: lightblue;
+    padding: 8px 40px;
+    border-radius: 12px;
 }
 
 .bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 80px;
 }
 
