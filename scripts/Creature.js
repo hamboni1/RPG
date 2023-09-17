@@ -1,13 +1,13 @@
-class Player{
-    constructor(name, attackPoints, hitPoints){
-        this.name = name;
+class Creature{
+    constructor(username, attackPoints, hitPoints){
+        this.username = username;
         this.attackPoints = attackPoints;
         this.hitPoints = hitPoints;
         this.alive = true
     }
 
     getUsername(){
-        return this.name;
+        return this.username;
     }
 
     getAttackPoints(){
@@ -28,7 +28,4 @@ class Player{
             this.alive = false;
         }
     }
-
 }
-
-const player = new Creature('player', 50, 500);

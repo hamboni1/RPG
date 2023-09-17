@@ -1,20 +1,20 @@
-class Player{
-    constructor(name, attackPoints, hitPoints){
-        this.name = name;
+class Creature{
+    constructor(username, attackPoints, hitPoints){
+        this.username = username;
         this.attackPoints = attackPoints;
         this.hitPoints = hitPoints;
         this.alive = true
     }
 
-    getUsername(){
-        return this.name;
+    name(){
+        return this.username;
     }
 
-    getAttackPoints(){
+    attack(){
         return this.attackPoints;
     }
 
-    getHitPoints(){
+    health(){
         return this.hitPoints;
     }
 

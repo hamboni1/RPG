@@ -1,131 +1,85 @@
-var opponent;
-let monsters;
 
+//Read the data from the JSON File
+var monsterList;
 var xhr = new XMLHttpRequest();
-
-xhr.onreadystatechange = function() {
+xhr.onload = function(){
     if (xhr.readyState == 4){
-        monsters = JSON.parse(xhr.responseText);
-        console.log(monsters)
-    }
+        monsterList = JSON.parse(xhr.responseText);
+    }   
 }
-xhr.open('GET', './scripts/monsters.JSON')
-xhr.send()
+xhr.open('GET', './scripts/monsterClasses.JSON');
+xhr.send();
 
-const start = document.getElementById("start")
-start.addEventListener("click", ()=> {
-    let img = document.querySelector('.arena')
-    let button = document.querySelector('#start')
-    
-    let top = document.querySelector('.top')
-    button.disabled = true;
 
-    start.textContent = "LET'S BEGIN";
-    console.log(monsters)
+var opponent;
+const start = document.getElementById('start')
+start.addEventListener('click', ()=>{
+    start.disabled = true;
+    let mainScreen = document.querySelector('.main-screen');
     setTimeout(()=>{
-        start.remove()
-        img.remove()
-        button.remove()
-        
-        top.classList.add('in-game');
+        mainScreen.innerHTML = null;
+        //Set up second screen
         setUpGame(player, opponent);
-    }, 2000)
+    },2000)
     opponent = createOpponent();
-
-    message.textContent = `How far can you go?`;
-
-    
 })
 
 
+
 function createOpponent(){
-    let NumOfClasses = monsters.length
-    let index = Math.floor(Math.random() * NumOfClasses) 
-    const monster = {...monsters[index]};
-    attackStat = statGenerator(monster.minAttack, monster.maxAttack)
-    healthStat = statGenerator(monster.minHealth, monster.maxHealth)
+    let NumOfClasses = monsterList.length
+    let index = Math.floor(Math.random() * NumOfClasses);
+    const monster = {...monsterList[index]}
+    let attackStat = statGenerator(monster.minAttack, monster.maxAttack)
+    let healthStat = statGenerator(monster.minHealth, monster.maxHealth)
    
-    console.log( attackStat, healthStat)
     return new Creature(monster.class, attackStat, healthStat)
-    
+
 }
 
-
-
-
-function statGenerator(low, high){
+function statGenerator(low, high) {
     let diff = high - low;
-    console.log("HERE",Math.round(Math.random() * diff + low))
-    let added = Math.round(Math.random() * diff)
-    return added + low;
+    return Math.round(Math.random() * diff) + low;
 }
-
-
 
 
 function setUpGame(player, opponent){
-    let message = document.querySelector('.message')
-    message.textContent = `Can you survive the ${opponent.name()}`;
-    let stat = document.createElement('p')
-    let top = document.querySelector('.top')
-    stat.classList.add('stat')
-  
-    stat.textContent = `${player.name()}
-        ${player.attack()}
-        ${player.health()}`
+    ///Set up the second phase page
 
-    let stat1  = document.createElement('p');
-    stat1.textContent = `${opponent.name()}
-        ${opponent.attack()}
-        ${opponent.health()}`;
-    stat1.classList.add('stat');
-
-    top.append(stat);
-    top.append(stat1);
-    
     let btn = document.createElement('button');
-    let bottom = document.querySelector('.bottom');
     btn.textContent = "Attack";
-
-    btn.addEventListener('click',()=>{
-        battle(player, opponent);
-        
-
+   
+    let mainScreen = document.querySelector('.main-screen');
+    
+    btn.addEventListener('click', ()=>{
+        battle(player,opponent)
     })
-
-    bottom.append(btn);
-
+    console.log(btn);
+    mainScreen.insertAdjacentElement('beforeend',btn);
 }
 
 
 function battle(player, opponent){
-    player.updateHealth(opponent.attack());
-    opponent.updateHealth(player.attack());
-    updateStatUI(player, opponent);
+    opponent.updateHealth(player.getAttackPoints())
+    updateHealthStat(opponent);
+    if (!opponent.isAlive()){
+        alert("You have won!");
+        opponent = createOpponent();
+        let mainScreen = document.querySelector(".main-screen");
+        mainScreen.innerHTML = null;
+        setUpGame(player,opponent);
+        return
+    }
+    updateHealthStat(player);
+    player.updateHealth(opponent.getAttackPoints())
+    if(!player.isAlive()){
+        alert("You are dead");
+        location.reload();
+    }
 
 }
 
-function updateStatUI(player, opponent){
-    let stats = document.querySelectorAll('.stat');
-    console.log(stats)
-    stats[0].textContent = `${player.name()}
-    ${player.attack()}
-    ${player.health()}`;
-    stats[1].textContent = `${opponent.name()}
-    ${opponent.attack()}
-    ${opponent.health()}`;
-
-    if (!player.isAlive()){
-        alert("You are dead")
-        location.reload();
-    }
-    else if(!opponent.isAlive()){
-        alert("You have won!");
-        opponent = createOpponent();
-        let top = document.querySelector('.top')
-        let bot = document.querySelector('.bottom')
-        top.innerHTML = "";
-        bot.innerHTML = "";
-        setUpGame(player, opponent);
-    }
+function updateHealthStat(opponent){
+    //Update the Health Bar
+    
 }

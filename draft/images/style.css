@@ -1,0 +1,95 @@
+
+.title {
+    box-sizing: border-box;
+    color:  red;
+    background-color: black;
+    margin: auto;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 19px;
+    padding: 0;
+    padding-top: 9px;
+}
+
+.main{
+    display: flex;
+    background-color: grey;
+    height: 90%;
+    max-height: 90%;
+}
+
+body{
+    margin: 0;
+}
+
+.main-screen {
+   
+    background-color: yellowgreen;
+    max-height: 700px;
+    max-width: 800px;
+   
+    margin: auto;
+}
+
+.message {
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+    color: gold;
+    background-color: rgb(91, 49, 121);
+    
+}
+
+.arena {
+    height: 500px;
+    width: 100%;
+}
+
+.start{
+    border: 2px solid black;
+    font-weight: bold;
+    background-color: lightblue;
+    padding: 8px 40px;
+    border-radius: 12px;
+}
+
+.bottom{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+
+
+.in-game {
+    height: 500px;
+    width: 100%;
+    background-color: black;
+    transition: ease;
+    z-index: -1;
+    color: red;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 50px;
+    padding: 0px;
+    margin: 0px;
+    
+    
+
+}
+p {
+    margin: 0;
+}
+
+.stat{
+    width: 150px;
+    height: 50px;
+    margin: 0;
+    background-color: white;
+    flex-direction: column;
+}

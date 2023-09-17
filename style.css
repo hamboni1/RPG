@@ -1,95 +1,122 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(222, 216, 200);
+    margin: 0px;
+}
+
+.page {
+    margin-top: 50px;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    flex: 1;
+}
 
 .title {
-    box-sizing: border-box;
-    color:  red;
-    background-color: black;
-    margin: auto;
-    width: 150px;
-    height: 50px;
-    text-align: center;
-    font-size: 19px;
-    padding: 0;
-    padding-top: 9px;
-}
-
-.main{
     display: flex;
-    background-color: grey;
-    height: 90%;
-    max-height: 90%;
-}
-
-body{
-    margin: 0;
+    justify-content: center;
+    border: 5px solid black;
+    height: 12%;
+    width: 30%;
+    color: red;
+    font-weight: bold;
+    font-size: 68px;
+    background-color: rgb(179, 163, 121);
 }
 
 .main-screen {
-   
-    background-color: yellowgreen;
-    max-height: 700px;
-    max-width: 800px;
-   
-    margin: auto;
+    height: 55%;
+    width: 40%;
+    border: 5px solid black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-.message {
-    margin: auto;
-    text-align: center;
-    font-size: 40px;
-    color: gold;
-    background-color: rgb(91, 49, 121);
-    
+.upper {
+    width: 100%;
+    height: 70%;
+    border-bottom: 5px solid black;
+    background-color: transparent;
+}
+
+.lower {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    gap: 20px;
 }
 
 .arena {
+    width: auto;
     height: 500px;
-    width: 100%;
 }
 
-.start{
+button,
+.start {
     border: 2px solid black;
-    font-weight: bold;
-    background-color: lightblue;
-    padding: 8px 40px;
+    background-color: rgb(179, 163, 121);
     border-radius: 12px;
-}
-
-.bottom{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-}
-
-
-
-.in-game {
-    height: 500px;
-    width: 100%;
-    background-color: black;
-    transition: ease;
-    z-index: -1;
+    padding: 8px 20px;
     color: red;
-    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer {
     display: flex;
+    justify-content: center;
     align-items: center;
+    background-color: black;
+    height: 100px;
+}
+
+.copyright {
+    font-size: 20px;
+    color: white;
+}
+
+
+.stats {
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
-    height: 50px;
-    padding: 0px;
-    margin: 0px;
-    
-    
+    align-items: center;
+    background-color: gray;
+
 
 }
-p {
-    margin: 0;
+
+.player-stats{
+    background-color: green;
 }
 
-.stat{
-    width: 150px;
-    height: 50px;
-    margin: 0;
-    background-color: white;
-    flex-direction: column;
+
+.opponent-stats{
+    background-color: red;
+}
+.images {
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.fighter {
+    width: 30%;
+    height: 30%;;
 }
